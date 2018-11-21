@@ -17,6 +17,8 @@
 		      <a class="nav-item nav-link @yield('t')" href="/teachers/create">New Teachers</a>
 		      <a class="nav-item nav-link @yield('s')" href="/students/create">New Students</a>
 		      <a class="nav-item nav-link @yield('a')" href="/areas/create">New Areas</a>
+		      <a class="nav-item nav-link @yield('c')" href="/courses">See Courses</a>
+		      <a class="nav-item nav-link @yield('sh')" href="/schedules">See Schedules</a>
 		    </div>
 		</div>
 	</nav>

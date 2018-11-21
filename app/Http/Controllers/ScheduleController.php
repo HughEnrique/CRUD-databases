@@ -18,8 +18,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $schedules = Schedule::orderBy('startime','ASC')->get();
         $courses = Course::All();
-        return view('schedules.index',compact('courses'));
+        return view('schedules.index',compact(['schedules','courses']));
     }
 
     /**
@@ -47,21 +48,56 @@ class ScheduleController extends Controller
             'startime' => 'required',
             'endtime' => 'required',
             'courses' => 'required',
-            'areas' => 'required'
+            'areas' => 'required',
+            'check-box' => 'required'
              ]);
 
         $schedule = new Schedule;
-        $schedule->startime = $request->input('startime');
-        $schedule->endtime = $request->input('endtime');
-        $schedule->course_id = $request['courses'];
-        $schedule->area_id = $request['areas'];
-        
+        if ($request->input('check-box')==1) {
+            $schedule->startime = $request->input('startime');
+            $schedule->endtime = $request->input('endtime');
+            $schedule->day = 'Monday';
+            $schedule->course_id = $request['courses'];
+            $schedule->area_id = $request['areas'];        
+            //$schedule->save();    
+        }
+        if ($request->input('check-box')==2) {
+            $schedule->startime = $request->input('startime');
+            $schedule->endtime = $request->input('endtime');
+            $schedule->day = 'Tuesday';
+            $schedule->course_id = $request['courses'];
+            $schedule->area_id = $request['areas'];        
+            //$schedule->save();    
+        }
+        if ($request->input('check-box')==3) {
+            $schedule->startime = $request->input('startime');
+            $schedule->endtime = $request->input('endtime');
+            $schedule->day = 'Wednesday';
+            $schedule->course_id = $request['courses'];
+            $schedule->area_id = $request['areas'];        
+            //$schedule->save();    
+        }
+        if ($request->input('check-box')==4) {
+            $schedule->startime = $request->input('startime');
+            $schedule->endtime = $request->input('endtime');
+            $schedule->day = 'Thursday';
+            $schedule->course_id = $request['courses'];
+            $schedule->area_id = $request['areas'];        
+            //$schedule->save();    
+        }
+        if ($request->input('check-box')==5) {
+            $schedule->startime = $request->input('startime');
+            $schedule->endtime = $request->input('endtime');
+            $schedule->day = 'Friday';
+            $schedule->course_id = $request['courses'];
+            $schedule->area_id = $request['areas'];        
+            //$schedule->save();    
+        }
         $schedule->save();
 
-        return 'sirve';
-        //$schedules = Schedule::All();
-        //return view('schedules.index', compact('schedules'));
-
+        $schedules = Schedule::orderBy('startime','ASC')->get();
+        $courses = Course::All();
+        return view('schedules.index', compact(['schedules','courses']));
     }
 
     /**
@@ -72,7 +108,10 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $courses = $id;
+        $areas = Area::All();
+        $schedules = Schedule::orderBy('startime','ASC')->get();
+        return view('schedules.show', compact(['courses','areas','schedules']));
     }
 
     /**

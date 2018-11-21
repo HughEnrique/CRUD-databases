@@ -5,6 +5,7 @@ namespace ProyectoLaravel\Http\Controllers;
 use Illuminate\Http\Request;
 use ProyectoLaravel\Student;
 use ProyectoLaravel\Course;
+use ProyectoLaravel\CourseStudent;
 
 class StudentController extends Controller
 {
@@ -26,7 +27,6 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $courses = Course::All();
         return view('student.create', compact('courses'));
     }
 
@@ -55,10 +55,12 @@ class StudentController extends Controller
         $student->city = $request->input('city');
         $student->phone = $request->input('phone');
         $student->slug = time().$request->input('name');
+
         $student->save();
 
+        $courses = Course::All();
         $students = Student::All();
-        return view('student.index', compact('students'));
+        return view('courses.create', compact(['courses','students']));
 
     }
 

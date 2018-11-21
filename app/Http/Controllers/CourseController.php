@@ -5,7 +5,7 @@ namespace ProyectoLaravel\Http\Controllers;
 use Illuminate\Http\Request;
 use ProyectoLaravel\Course;
 use ProyectoLaravel\Student;
-use ProyectoLaravel\Teacher;
+use ProyectoLaravel\CourseStudent;
 
 
 
@@ -29,10 +29,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $students = Student::All();
-        $teachers = Teacher::All();
-
-        return view('courses.create',compact(['students','teachers']));
+    
     }
 
     /**
@@ -43,7 +40,14 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $coursestudent = new CourseStudent;
+
+        $coursestudent->student_id = $request['students'];
+        $coursestudent->course_id = $request['courses'];
+        $coursestudent->save();
+
+        $students = Student::All();
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -53,8 +57,11 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $courses = $id;
+        $coursestudents = CourseStudent::All();
+        $students = Student::All();
+        return view('courses.show', compact(['coursestudents','students','courses']));
     }
 
     /**

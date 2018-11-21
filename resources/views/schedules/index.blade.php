@@ -4,6 +4,8 @@
 
 @section('title1','Schedules list')
 
+@section('sh','active')
+
 @section('content')
 
 	<div class="row">
@@ -13,7 +15,7 @@
 			  <div class="card-body text-center">
 			    <h5 class="card-title">{{$course->grado}}</h5>
 			   
-			    <a href="" style="margin: 10px;" class="btn btn-dark ">Ver más...</a>
+			    <a href="/schedules/{{$course->id}}" style="margin: 10px;" class="btn btn-dark ">Ver más...</a>
 			  </div>
 			</div>
 		</div>

@@ -18,7 +18,8 @@ class CreateSchedulesTable extends Migration
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('area_id');
             $table->time('startime');
-             $table->time('endtime');
+            $table->time('endtime');
+            $table->string('day');
             $table->index(['id','course_id']);
 
 

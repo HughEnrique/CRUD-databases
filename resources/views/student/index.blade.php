@@ -11,8 +11,8 @@
 			      <th scope="col">Last Name</th>
 			      <th scope="col">C.I.</th>
 			      <th scope="col">Address</th>
-			      <th scope="col">Phone</th>
 			      <th scope="col">City</th>
+			      <th scope="col">Phone</th>
 			      <th scope="col">Option</th>
 			    </tr>
 			  </thead>
